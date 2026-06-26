@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Презентация — Защита интересов призывника</title>
+  <title>Презентация для призывников — защита ваших интересов</title>
+  <meta name="description" content="Презентация о законной помощи призывникам. Изучите материалы и оставьте заявку на консультацию.">
 
-  <!-- Шрифты подключаются из Google Fonts. Файлы шрифтов в репозиторий закидывать не нужно. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Russo+One&display=swap" rel="stylesheet">
@@ -13,13 +13,12 @@
   <style>
     :root {
       --bg: #0b0d10;
-      --bg-soft: #101317;
       --panel: rgba(11, 13, 16, 0.94);
       --line: rgba(255, 255, 255, 0.12);
-      --line-strong: rgba(255, 255, 255, 0.2);
+      --line-strong: rgba(255, 255, 255, 0.22);
       --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.68);
-      --muted-2: rgba(255, 255, 255, 0.48);
+      --muted: rgba(255, 255, 255, 0.66);
+      --muted-2: rgba(255, 255, 255, 0.46);
       --red: #ed1c24;
       --red-hover: #ff3038;
       --font-text: "Montserrat", Arial, Helvetica, sans-serif;
@@ -28,6 +27,10 @@
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     html,
@@ -45,13 +48,13 @@
 
     .site {
       min-height: 100vh;
-      background: linear-gradient(180deg, #0b0d10 0%, #111418 46%, #0b0d10 100%);
+      background: linear-gradient(180deg, #0b0d10 0%, #101317 48%, #0b0d10 100%);
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
       background: var(--panel);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(14px);
@@ -59,51 +62,34 @@
 
     .topbar__inner {
       width: min(1240px, calc(100% - 32px));
-      min-height: 82px;
+      min-height: 78px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto minmax(360px, 1fr);
+      grid-template-columns: minmax(150px, 1fr) auto;
       align-items: center;
-      gap: 22px;
+      gap: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       min-width: 0;
+      text-decoration: none;
     }
 
     .brand__logo {
-      width: 148px;
+      width: 154px;
+      max-width: 100%;
       height: auto;
       display: block;
     }
 
-    .viewer-title {
-      text-align: center;
-      min-width: 210px;
-    }
-
-    .viewer-title__main {
-      font-family: var(--font-title);
-      font-size: 16px;
-      line-height: 1;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .viewer-title__sub {
-      margin-top: 7px;
-      color: var(--muted-2);
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .actions {
+    .controls {
       display: flex;
       align-items: center;
       justify-content: flex-end;
       gap: 8px;
+      min-width: 0;
     }
 
     button,
@@ -115,7 +101,7 @@
       color: var(--text);
       font-family: var(--font-text);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
       cursor: pointer;
       outline: none;
@@ -123,13 +109,13 @@
       transition:
         background 0.18s ease,
         border-color 0.18s ease,
-        transform 0.18s ease;
+        transform 0.18s ease,
+        opacity 0.18s ease;
     }
 
     button {
       min-width: 42px;
-      padding: 0 13px;
-      font-size: 18px;
+      padding: 0 14px;
       line-height: 1;
     }
 
@@ -137,7 +123,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 18px;
+      padding: 0 20px;
       white-space: nowrap;
     }
 
@@ -153,7 +139,7 @@
     }
 
     button:disabled {
-      opacity: 0.42;
+      opacity: 0.38;
       cursor: not-allowed;
     }
 
@@ -170,67 +156,29 @@
       background: var(--red-hover);
     }
 
+    .icon-button {
+      font-size: 18px;
+    }
+
+    .nav-button {
+      min-width: 118px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
     .zoom {
-      min-width: 56px;
+      min-width: 54px;
       text-align: center;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 700;
-    }
-
-    .hero {
-      width: min(1240px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 32px 0 23px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
-      gap: 28px;
-      align-items: end;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero__eyebrow {
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .hero__title {
-      max-width: 830px;
-      margin: 12px 0 0;
-      font-family: var(--font-title);
-      font-size: clamp(30px, 5vw, 64px);
-      line-height: 0.98;
-      font-weight: 400;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-    }
-
-    .hero__text {
-      max-width: 650px;
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      font-weight: 500;
-    }
-
-    .hero__note {
-      padding: 16px 18px;
-      border-left: 3px solid var(--red);
-      background: rgba(255, 255, 255, 0.035);
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      font-weight: 500;
+      font-weight: 800;
     }
 
     .viewer-shell {
       width: min(1240px, 100%);
       margin: 0 auto;
-      padding: 24px 0 56px;
+      padding: 18px 0 0;
     }
 
     .status {
@@ -257,6 +205,7 @@
       max-width: 100%;
       margin: 0 auto 20px;
       line-height: 0;
+      scroll-margin-top: 96px;
     }
 
     canvas {
@@ -267,85 +216,90 @@
       box-shadow: 0 20px 54px rgba(0, 0, 0, 0.34);
     }
 
+    .cta {
+      width: min(980px, calc(100% - 32px));
+      margin: 34px auto 56px;
+      padding: clamp(26px, 5vw, 46px);
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(237, 28, 36, 0.15), rgba(237, 28, 36, 0) 42%),
+        rgba(255, 255, 255, 0.035);
+      text-align: center;
+    }
+
+    .cta__eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .cta__title {
+      max-width: 780px;
+      margin: 12px auto 0;
+      font-family: var(--font-title);
+      font-size: clamp(26px, 4.8vw, 48px);
+      line-height: 1.05;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .cta__text {
+      max-width: 660px;
+      margin: 16px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .cta__phone {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--text);
+      font-size: clamp(26px, 5vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: -0.04em;
+    }
+
+    .cta__time {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .cta__actions {
+      margin-top: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .hidden {
       display: none !important;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 840px) {
       .topbar__inner {
         grid-template-columns: 1fr;
         gap: 12px;
         padding: 12px 0;
       }
 
-      .brand__logo {
-        width: 130px;
-      }
-
-      .viewer-title {
-        display: none;
-      }
-
-      .actions {
+      .controls {
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: 2px;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 24px;
-      }
-
-      .hero__note {
-        max-width: none;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .topbar__inner,
-      .hero {
-        width: calc(100% - 20px);
-      }
-
-      .topbar__inner {
-        min-height: 0;
-      }
-
       .brand__logo {
-        width: 116px;
-      }
-
-      .actions {
-        gap: 6px;
-      }
-
-      button {
-        min-width: 38px;
-        height: 40px;
-        padding: 0 11px;
-      }
-
-      .button {
-        height: 40px;
-        padding: 0 13px;
-        font-size: 12px;
-      }
-
-      .button--red {
-        letter-spacing: 0;
-      }
-
-      .zoom {
-        min-width: 48px;
-      }
-
-      .hero__title {
-        font-size: clamp(28px, 9vw, 44px);
-      }
-
-      .hero__text {
-        font-size: 14px;
+        width: 132px;
       }
 
       .viewer-shell {
@@ -353,11 +307,86 @@
       }
 
       .pdf-page {
+        scroll-margin-top: 145px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar__inner {
+        width: calc(100% - 20px);
+        min-height: 0;
+      }
+
+      .brand__logo {
+        width: 118px;
+      }
+
+      .controls {
+        gap: 6px;
+      }
+
+      button {
+        height: 39px;
+        min-width: 38px;
+        padding: 0 11px;
+      }
+
+      .button {
+        height: 40px;
+        padding: 0 15px;
+        font-size: 12px;
+      }
+
+      .button--red {
+        letter-spacing: 0;
+      }
+
+      .nav-button {
+        min-width: auto;
+        font-size: 0;
+        width: 40px;
+        padding: 0;
+      }
+
+      .nav-button--prev::before {
+        content: "↑";
+        font-size: 17px;
+      }
+
+      .nav-button--next::before {
+        content: "↓";
+        font-size: 17px;
+      }
+
+      .zoom {
+        min-width: 48px;
+      }
+
+      .pdf-page {
         margin-bottom: 10px;
+        scroll-margin-top: 138px;
       }
 
       canvas {
         box-shadow: none;
+      }
+
+      .cta {
+        width: calc(100% - 20px);
+        margin-top: 24px;
+        margin-bottom: 34px;
+      }
+
+      .cta__text {
+        font-size: 14px;
+      }
+
+      .cta__actions {
+        display: grid;
+      }
+
+      .cta__actions .button {
+        width: 100%;
       }
     }
   </style>
@@ -371,38 +400,37 @@
           <img class="brand__logo" src="LOGOZIP.svg" alt="Защита интересов призывника">
         </a>
 
-        <div class="viewer-title">
-          <div class="viewer-title__main">Презентация</div>
-          <div class="viewer-title__sub" id="pdfMeta">Загрузка PDF…</div>
-        </div>
+        <div class="controls" aria-label="Управление презентацией">
+          <button class="nav-button nav-button--prev" id="prevPage" type="button">Назад</button>
+          <button class="nav-button nav-button--next" id="nextPage" type="button">Далее</button>
 
-        <div class="actions">
-          <button id="zoomOut" type="button" title="Уменьшить">−</button>
+          <button class="icon-button" id="zoomOut" type="button" title="Уменьшить">−</button>
           <div class="zoom" id="zoomValue">100%</div>
-          <button id="zoomIn" type="button" title="Увеличить">+</button>
-          <a class="button" id="openPdf" target="_blank" rel="noopener">Открыть PDF</a>
-          <a class="button button--red" id="downloadPdf" download>Скачать</a>
+          <button class="icon-button" id="zoomIn" type="button" title="Увеличить">+</button>
         </div>
       </div>
     </header>
 
-    <section class="hero">
-      <div>
-        <div class="hero__eyebrow">Центр помощи призывникам</div>
-        <h1 class="hero__title">Получили повестку?</h1>
-        <p class="hero__text">
-          Изучите материалы прямо в браузере. Если файл нужен отдельно, используйте кнопку скачивания в верхней панели.
-        </p>
-      </div>
-
-      <div class="hero__note">
-        Работаем строго в правовом поле. Каждый случай требует индивидуального анализа документов и ситуации.
-      </div>
+    <section class="viewer-shell">
+      <div id="status" class="status">Загрузка презентации…</div>
+      <div id="viewer"></div>
     </section>
 
-    <section class="viewer-shell">
-      <div id="status" class="status">Загрузка PDF…</div>
-      <div id="viewer"></div>
+    <section class="cta" id="consultation">
+      <div class="cta__eyebrow">Бесплатная консультация</div>
+      <h1 class="cta__title">Остались вопросы по вашей ситуации?</h1>
+      <p class="cta__text">
+        Оставьте заявку или позвоните нам. Разберём документы, оценим перспективы и подскажем,
+        какие законные шаги можно сделать уже сейчас.
+      </p>
+
+      <a class="cta__phone" href="tel:+79373337999">+7 (937) 333-7-999</a>
+      <div class="cta__time">Ежедневно · с 9:00 до 20:00</div>
+
+      <div class="cta__actions">
+        <a class="button button--red" href="https://zip-rf.ru/?utm_source=lead_magnet&utm_medium=pdf&utm_campaign=lm_povestka72&utm_content=cta_final#finalcta">Оставить заявку</a>
+        <a class="button" href="tel:+79373337999">Позвонить</a>
+      </div>
     </section>
   </main>
 
@@ -416,40 +444,70 @@
 
     const viewer = document.getElementById('viewer');
     const status = document.getElementById('status');
-    const pdfMeta = document.getElementById('pdfMeta');
     const zoomOut = document.getElementById('zoomOut');
     const zoomIn = document.getElementById('zoomIn');
     const zoomValue = document.getElementById('zoomValue');
-    const openPdf = document.getElementById('openPdf');
-    const downloadPdf = document.getElementById('downloadPdf');
+    const prevPage = document.getElementById('prevPage');
+    const nextPage = document.getElementById('nextPage');
+    const cta = document.getElementById('consultation');
 
     let pdfDoc = null;
     let zoom = 1;
     let renderToken = 0;
     let resizeTimer = null;
-
-    openPdf.href = encodeURI(PDF_FILE);
-    downloadPdf.href = encodeURI(PDF_FILE);
-    downloadPdf.setAttribute('download', PDF_FILE);
+    let currentPageIndex = 0;
 
     loadPdf();
 
     zoomOut.addEventListener('click', () => {
       zoom = Math.max(0.65, Number((zoom - 0.1).toFixed(2)));
       updateZoom();
-      renderAllPages();
+      renderAllPages().then(() => scrollToPage(currentPageIndex));
     });
 
     zoomIn.addEventListener('click', () => {
       zoom = Math.min(2.1, Number((zoom + 0.1).toFixed(2)));
       updateZoom();
-      renderAllPages();
+      renderAllPages().then(() => scrollToPage(currentPageIndex));
     });
+
+    prevPage.addEventListener('click', () => {
+      updateCurrentPageByScroll();
+
+      if (isCtaVisible()) {
+        scrollToPage(getPageElements().length - 1);
+        return;
+      }
+
+      scrollToPage(Math.max(currentPageIndex - 1, 0));
+    });
+
+    nextPage.addEventListener('click', () => {
+      updateCurrentPageByScroll();
+
+      const pages = getPageElements();
+
+      if (!pages.length) return;
+
+      if (currentPageIndex >= pages.length - 1) {
+        cta.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      scrollToPage(currentPageIndex + 1);
+    });
+
+    window.addEventListener('scroll', () => {
+      updateCurrentPageByScroll();
+      updateNavButtons();
+    }, { passive: true });
 
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        if (pdfDoc) renderAllPages();
+        if (pdfDoc) {
+          renderAllPages().then(() => scrollToPage(currentPageIndex));
+        }
       }, 220);
     });
 
@@ -457,8 +515,7 @@
       renderToken++;
       viewer.innerHTML = '';
       status.classList.remove('hidden');
-      status.textContent = 'Загрузка PDF…';
-      pdfMeta.textContent = PDF_FILE;
+      status.textContent = 'Загрузка презентации…';
 
       try {
         const loadingTask = pdfjsLib.getDocument({
@@ -469,7 +526,6 @@
         });
 
         pdfDoc = await loadingTask.promise;
-        pdfMeta.textContent = `${pdfDoc.numPages} стр.`;
         updateZoom();
         await renderAllPages();
       } catch (error) {
@@ -509,6 +565,7 @@
 
         const pageBox = document.createElement('article');
         pageBox.className = 'pdf-page';
+        pageBox.dataset.page = String(pageNumber);
 
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d', { alpha: false });
@@ -532,7 +589,66 @@
 
       if (token === renderToken) {
         status.classList.add('hidden');
+        updateCurrentPageByScroll();
+        updateNavButtons();
       }
+    }
+
+    function getPageElements() {
+      return Array.from(document.querySelectorAll('.pdf-page'));
+    }
+
+    function getHeaderOffset() {
+      const topbar = document.querySelector('.topbar');
+      return topbar ? topbar.offsetHeight + 14 : 0;
+    }
+
+    function scrollToPage(index) {
+      const pages = getPageElements();
+      if (!pages.length) return;
+
+      const safeIndex = Math.max(0, Math.min(index, pages.length - 1));
+      currentPageIndex = safeIndex;
+
+      const y = pages[safeIndex].getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+      window.scrollTo({ top: y, behavior: 'smooth' });
+
+      updateNavButtons();
+    }
+
+    function updateCurrentPageByScroll() {
+      const pages = getPageElements();
+      if (!pages.length) return;
+
+      const referenceY = window.scrollY + getHeaderOffset() + 40;
+      let activeIndex = 0;
+
+      pages.forEach((page, index) => {
+        if (page.offsetTop <= referenceY) {
+          activeIndex = index;
+        }
+      });
+
+      currentPageIndex = activeIndex;
+    }
+
+    function isCtaVisible() {
+      const rect = cta.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.55 && rect.bottom > 120;
+    }
+
+    function updateNavButtons() {
+      const pages = getPageElements();
+
+      if (!pages.length) {
+        prevPage.disabled = true;
+        nextPage.disabled = true;
+        return;
+      }
+
+      const atTop = currentPageIndex <= 0 && !isCtaVisible();
+      prevPage.disabled = atTop;
+      nextPage.disabled = false;
     }
 
     function updateZoom() {
