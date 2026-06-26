@@ -5,18 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Презентация — Защита интересов призывника</title>
 
+  <!-- Шрифты подключаются из Google Fonts. Файлы шрифтов в репозиторий закидывать не нужно. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Russo+One&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0b0d10;
-      --bg-2: #111418;
+      --bg-soft: #101317;
       --panel: rgba(11, 13, 16, 0.94);
       --line: rgba(255, 255, 255, 0.12);
+      --line-strong: rgba(255, 255, 255, 0.2);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.68);
+      --muted-2: rgba(255, 255, 255, 0.48);
       --red: #ed1c24;
       --red-hover: #ff3038;
-      --dark-red: #9f1016;
-      --radius: 14px;
+      --font-text: "Montserrat", Arial, Helvetica, sans-serif;
+      --font-title: "Russo One", Impact, sans-serif;
     }
 
     * {
@@ -29,21 +36,16 @@
       min-height: 100%;
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: var(--font-text);
     }
 
     body {
       overflow-y: scroll;
     }
 
-    a {
-      color: inherit;
-    }
-
     .site {
       min-height: 100vh;
-      background:
-        linear-gradient(180deg, #0b0d10 0%, #111418 42%, #0b0d10 100%);
+      background: linear-gradient(180deg, #0b0d10 0%, #111418 46%, #0b0d10 100%);
     }
 
     .topbar {
@@ -57,68 +59,44 @@
 
     .topbar__inner {
       width: min(1240px, calc(100% - 32px));
-      min-height: 76px;
+      min-height: 82px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: minmax(220px, 1fr) auto minmax(360px, 1fr);
       align-items: center;
-      gap: 20px;
+      gap: 22px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
       min-width: 0;
     }
 
-    .brand__mark {
-      width: 42px;
-      height: 42px;
-      flex: 0 0 auto;
-      border: 1px solid rgba(237, 28, 36, 0.6);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--red);
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .brand__text {
-      min-width: 0;
-    }
-
-    .brand__name {
-      font-size: 13px;
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .brand__sub {
-      margin-top: 4px;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
+    .brand__logo {
+      width: 148px;
+      height: auto;
+      display: block;
     }
 
     .viewer-title {
       text-align: center;
+      min-width: 210px;
     }
 
     .viewer-title__main {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-family: var(--font-title);
+      font-size: 16px;
+      line-height: 1;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .viewer-title__sub {
-      margin-top: 4px;
+      margin-top: 7px;
+      color: var(--muted-2);
       font-size: 12px;
-      color: var(--muted);
+      font-weight: 500;
     }
 
     .actions {
@@ -130,36 +108,48 @@
 
     button,
     .button {
-      height: 40px;
+      height: 42px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: transparent;
       color: var(--text);
-      font: inherit;
+      font-family: var(--font-text);
       font-size: 13px;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       outline: none;
       user-select: none;
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
     }
 
     button {
       min-width: 42px;
       padding: 0 13px;
+      font-size: 18px;
+      line-height: 1;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 17px;
+      padding: 0 18px;
       white-space: nowrap;
     }
 
     button:hover,
     .button:hover {
-      border-color: rgba(255, 255, 255, 0.32);
+      border-color: var(--line-strong);
       background: rgba(255, 255, 255, 0.06);
+    }
+
+    button:active,
+    .button:active {
+      transform: translateY(1px);
     }
 
     button:disabled {
@@ -171,7 +161,6 @@
       border-color: var(--red);
       background: var(--red);
       color: #fff;
-      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -182,63 +171,66 @@
     }
 
     .zoom {
-      min-width: 52px;
+      min-width: 56px;
       text-align: center;
       color: var(--muted);
       font-size: 13px;
+      font-weight: 700;
     }
 
     .hero {
       width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 30px 0 20px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
+      padding: 32px 0 23px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 28px;
+      align-items: end;
       border-bottom: 1px solid var(--line);
     }
 
     .hero__eyebrow {
       color: var(--red);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .hero__title {
-      max-width: 760px;
-      margin: 10px 0 0;
-      font-size: clamp(28px, 5vw, 58px);
+      max-width: 830px;
+      margin: 12px 0 0;
+      font-family: var(--font-title);
+      font-size: clamp(30px, 5vw, 64px);
       line-height: 0.98;
-      letter-spacing: -0.04em;
+      font-weight: 400;
+      letter-spacing: 0.01em;
       text-transform: uppercase;
     }
 
     .hero__text {
-      max-width: 560px;
-      margin: 14px 0 0;
+      max-width: 650px;
+      margin: 16px 0 0;
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.5;
+      line-height: 1.55;
+      font-weight: 500;
     }
 
     .hero__note {
-      flex: 0 0 auto;
-      max-width: 290px;
-      padding: 14px 16px;
+      padding: 16px 18px;
       border-left: 3px solid var(--red);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.035);
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
     .viewer-shell {
       width: min(1240px, 100%);
       margin: 0 auto;
-      padding: 22px 0 52px;
+      padding: 24px 0 56px;
     }
 
     .status {
@@ -249,6 +241,7 @@
       color: var(--muted);
       text-align: center;
       line-height: 1.5;
+      font-weight: 500;
     }
 
     .status strong {
@@ -256,12 +249,13 @@
       margin-bottom: 8px;
       color: var(--text);
       font-size: 18px;
+      font-weight: 800;
     }
 
     .pdf-page {
       width: fit-content;
       max-width: 100%;
-      margin: 0 auto 18px;
+      margin: 0 auto 20px;
       line-height: 0;
     }
 
@@ -270,18 +264,22 @@
       max-width: 100%;
       height: auto;
       background: #fff;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.34);
     }
 
     .hidden {
       display: none !important;
     }
 
-    @media (max-width: 940px) {
+    @media (max-width: 980px) {
       .topbar__inner {
         grid-template-columns: 1fr;
         gap: 12px;
         padding: 12px 0;
+      }
+
+      .brand__logo {
+        width: 130px;
       }
 
       .viewer-title {
@@ -295,13 +293,12 @@
       }
 
       .hero {
-        display: block;
+        grid-template-columns: 1fr;
         padding-top: 24px;
       }
 
       .hero__note {
         max-width: none;
-        margin-top: 18px;
       }
     }
 
@@ -311,18 +308,12 @@
         width: calc(100% - 20px);
       }
 
-      .brand__mark {
-        width: 36px;
-        height: 36px;
-        font-size: 13px;
+      .topbar__inner {
+        min-height: 0;
       }
 
-      .brand__name {
-        font-size: 12px;
-      }
-
-      .brand__sub {
-        white-space: normal;
+      .brand__logo {
+        width: 116px;
       }
 
       .actions {
@@ -331,23 +322,34 @@
 
       button {
         min-width: 38px;
+        height: 40px;
         padding: 0 11px;
       }
 
       .button {
+        height: 40px;
         padding: 0 13px;
+        font-size: 12px;
       }
 
       .button--red {
         letter-spacing: 0;
       }
 
+      .zoom {
+        min-width: 48px;
+      }
+
       .hero__title {
-        font-size: clamp(26px, 9vw, 42px);
+        font-size: clamp(28px, 9vw, 44px);
+      }
+
+      .hero__text {
+        font-size: 14px;
       }
 
       .viewer-shell {
-        padding-top: 14px;
+        padding-top: 12px;
       }
 
       .pdf-page {
@@ -365,13 +367,9 @@
   <main class="site">
     <header class="topbar">
       <div class="topbar__inner">
-        <div class="brand">
-          <div class="brand__mark">ЗИП</div>
-          <div class="brand__text">
-            <div class="brand__name">Защита интересов призывника</div>
-            <div class="brand__sub">Медико-правовая компания</div>
-          </div>
-        </div>
+        <a class="brand" href="./" aria-label="Защита интересов призывника">
+          <img class="brand__logo" src="LOGOZIP.svg" alt="Защита интересов призывника">
+        </a>
 
         <div class="viewer-title">
           <div class="viewer-title__main">Презентация</div>
@@ -390,10 +388,10 @@
 
     <section class="hero">
       <div>
-        <div class="hero__eyebrow">Правовая помощь призывникам</div>
-        <h1 class="hero__title">Презентация открыта</h1>
+        <div class="hero__eyebrow">Центр помощи призывникам</div>
+        <h1 class="hero__title">Получили повестку?</h1>
         <p class="hero__text">
-          Изучите материалы прямо в браузере. Если файл нужен отдельно, используйте кнопку скачивания вверху страницы.
+          Изучите материалы прямо в браузере. Если файл нужен отдельно, используйте кнопку скачивания в верхней панели.
         </p>
       </div>
 
